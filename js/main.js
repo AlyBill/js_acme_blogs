@@ -1,100 +1,118 @@
 //function 1
+
 function createElemWithText(HTMLelement="p",textContent="",className="")
 {
+  //var myElement is creating to store HTML element using the createElement() function
   var myElement = document.createElement(HTMLelement);
-  
+
+  //myElement.className gets set to className
   myElement.className=className;
-  
+
+  //the innterText of myElement gets set to textContent
   myElement.innerText=textContent;
-  
+
+  //returns myElement 
   return myElement;
   
 }
 
-
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //function 2
-function createSelectOptions(myUsers){
+
+function createSelectOptions(myUsers)
+{
+  //if the myUsers parameter doesn't have any data, createSelectOptions will return undefined
   if (!myUsers)
     {
       return undefined;
     }
+
+  //myOptions is a created array
   const myOptions = [];
-  for (const user of myUsers){
+  
+  for (const user of myUsers)
+  {
+    //option is created to the createElement function containing "option"
     const option = document.createElement("option");
-    
+
+    //the following sets value, textContent to id and name (in the user attribute)
     option.value = user.id;
-    
     option.textContent = user.name;
-    
+
+    //the following pushes option to myOptions 
     myOptions.push(option);
     
     
   }
+  //returns myOptions
   return myOptions;
   
   
 }
-
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //function 3
 
-        function toggleCommentSection(postId) 
+
+function toggleCommentSection(postId) 
+  
 {
-            
-            if (!postId) {
-                return undefined;
-            } 
+//if nothing in postId parameter, toggleCommentSection will return undefined          
+ if (!postId) 
+ {
+   return undefined;
+  } 
+   
   else 
-            {
-                const commentSections = document.querySelectorAll('[data-post-id]');
+  {
+   const commentSections = document.querySelectorAll('[data-post-id]');
+    
                 
-                for (let i = 0; i < commentSections.length; i++) 
-                {
-                    const commentSection = commentSections[i];
+  for (let x = 0; x < commentSections.length; x++) 
+  {
+  const commentSection = commentSections[x];
                    
-                    if (commentSection.getAttribute('data-post-id') === postId) 
-                    {
+ if (commentSection.getAttribute('data-post-id') === postId) 
+    {
                         
-                        commentSection.classList.toggle('data');
+      commentSection.classList.toggle('data');
                       
-                        return commentSection;
-                    }
-                }
-              return null;
-                
-              
-            }   
-        }
+      return commentSection;
+    } }
+   return null;}   }
 
 
 //function 4
 
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function toggleCommentButton (postID) 
 {
 
-
+//if postId is empty, function will return undefined
   if (!postID) 
   {
-    return;
+    return undefined;
   }
+ const buttons = document.querySelector(`button[data-post-id = "${postID}"`);
+  
 
-
-  const buttons = document.querySelector(`button[data-post-id = "${postID}"`);
-
-  if (buttons != null) {
+  if (buttons != null) 
+  {
     buttons.textContent === "Show Comments" ? (buttons.textContent = "Hide Comments") : (buttons.textContent = "Show Comments");
   }
 
   return buttons;
 };
+
 console.log(toggleCommentButton("btnToTest"));
 
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //function 5
 
  function remove()
-{ 
-  deleteChildElements(document.getElementById("div")); 
-}
+   
+
 function deleteChildElements(parentElement) 
 {
 if (!parentElement || !(parentElement instanceof HTMLElement)) {
