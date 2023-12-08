@@ -1,215 +1,267 @@
 //function 1
-
+//-------------------------------------------------------------------------------------------------------------------------
 function createElemWithText(HTMLelement="p",textContent="",className="")
 {
-  //var myElement is creating to store HTML element using the createElement() function
+  
+  
   var myElement = document.createElement(HTMLelement);
-
-  //myElement.className gets set to className
+  
+  
   myElement.className=className;
-
-  //the innterText of myElement gets set to textContent
+  
   myElement.innerText=textContent;
-
-  //returns myElement 
+  
   return myElement;
   
 }
 
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------
 //function 2
-
-function createSelectOptions(myUsers)
-{
-  //if the myUsers parameter doesn't have any data, createSelectOptions will return undefined
+function createSelectOptions(myUsers){
   if (!myUsers)
     {
       return undefined;
     }
-
-  //myOptions is a created array
   const myOptions = [];
-  
-  for (const user of myUsers)
-  {
-    //option is created to the createElement function containing "option"
+  for (const user of myUsers){
     const option = document.createElement("option");
-
-    //the following sets value, textContent to id and name (in the user attribute)
+    
     option.value = user.id;
+    
     option.textContent = user.name;
-
-    //the following pushes option to myOptions 
+    
     myOptions.push(option);
     
     
   }
-  //returns myOptions
   return myOptions;
   
   
 }
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------
+
 //function 3
 
-
-function toggleCommentSection(postId) 
-  
+        function toggleCommentSection(postId) 
 {
-//if nothing in postId parameter, toggleCommentSection will return undefined          
- if (!postId) 
- {
-   return undefined;
-  } 
-   
-  else 
-  {
-   const commentSections = document.querySelectorAll('[data-post-id]');
-    
+            
+            if (!postId) {
+                return undefined;
+            } 
+        else 
+            {
+                const commentSections=document.querySelectorAll('[data-post-id]');
                 
-  for (let x = 0; x < commentSections.length; x++) 
-  {
-  const commentSection = commentSections[x];
+                for (let x=0;x<commentSections.length;x++) 
+                {
+                    const commentSection=commentSections[x];
                    
- if (commentSection.getAttribute('data-post-id') === postId) 
-    {
+                    if (commentSection.getAttribute('data-post-id') === postId) 
+                    {
                         
-      commentSection.classList.toggle('data');
+                        commentSection.classList.toggle('data');
                       
-      return commentSection;
-    } }
-   return null;}   }
-
-
+                      
+                      
+                      
+                      
+                        return commentSection;
+                    }
+                }
+              
+              
+              
+              
+              return null;
+                
+              
+            }   
+        }
+//--------------------------------------------------------------------------------------------------------------------------
 //function 4
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 function toggleCommentButton (postID) 
 {
 
-//if postId is empty, function will return undefined
+
   if (!postID) 
   {
     return undefined;
   }
- const buttons = document.querySelector(`button[data-post-id = "${postID}"`);
+
+
+  const theButtons = document.querySelector(`button[data-post-id = "${postID}"`);
   
 
-  if (buttons != null) 
+  if (theButtons != null) 
   {
-    buttons.textContent === "Show Comments" ? (buttons.textContent = "Hide Comments") : (buttons.textContent = "Show Comments");
+    theButtons.textContent === "Show Comments"?(theButtons.textContent="Hide Comments"):(theButtons.textContent= "Show Comments");
   }
 
-  return buttons;
+  return theButtons;
+  
+  
+  
 };
-
 console.log(toggleCommentButton("btnToTest"));
 
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------------------------------------------------------
+
 //function 5
 
- function remove()
-   
 
 function deleteChildElements(parentElement) 
+
 {
-if (!parentElement || !(parentElement instanceof HTMLElement)) {
+  
+if (!parentElement || !(parentElement instanceof HTMLElement)) 
+  {
     return undefined;
   }
 { 
-  let child = parentElement.lastElementChild; 
-  while (child){ 
-
-    parentElement.removeChild(child);
+  let childs = parentElement.lastElementChild; 
+  while (childs)
+  
+  {
     
-    child = parentElement.lastElementChild; 
+    
+
+    parentElement.removeChild(childs);
+    
+    childs = parentElement.lastElementChild; 
     }
-  return parentElement
+  
+  
+  
+  
+  
+  
+  return parentElement;
   }
 }
 
-
+//---------------------------------------------------------------------------------------------------------------------------
 //function 6
-const addButtonListeners = () => {
-    let myMainElem = document.querySelector('main')
+const addButtonListeners=()=> 
+{
+    let mine = document.querySelector('main');
     
-    let buttonsList = myMainElem.querySelectorAll('button')
+    let buttonsListing = mine.querySelectorAll('button');
     
-    if(buttonsList)
+    if(buttonsListing)
     {
-        for(let x = 0; x < buttonsList.length; x++){
-            let myButton = buttonsList[x]
-            let postId = myButton.dataset.postId
-            myButton.addEventListener('click', function(event)
+        for(let x = 0; x < buttonsListing.length; x++)
+        {
+            let mineee = buttonsListing[x]
+            let postId = mineee.dataset.postId
+            mineee.addEventListener('click',function(event)
                                       {
-                toggleComments(event, postId), false
+                toggleComments(event, postId),false
             })
         }
-        return buttonsList
+        return buttonsListing;
     }
 
 }
+
+
+
+
+
+//------------------------------------------------------------------------------------------------------------------------
 //function 7
-const removeButtonListeners = () => 
+const removeButtonListeners=()=> 
 {
-    let myMainElem = document.querySelector('main');
+    let mine = document.querySelector('main');
   
-    let buttonsList = myMainElem.querySelectorAll('button');
+    let buttonsListing = mine.querySelectorAll('button');
   
-    console.log(buttonsList);
+    console.log(buttonsListing);
   
-    if(buttonsList)
+    if(buttonsListing)
     {
-        for(let x = 0; x < buttonsList.length; x++)
+        for(let x = 0;x < buttonsListing.length;x++)
         {
-            let myButton = buttonsList[x];
+            let mineee=buttonsListing[x];
           
-            const postId = myButton.dataset.postId;
           
-            myButton.removeEventListener('click', function(event)
+          
+            const postId=mineee.dataset.postId;
+          
+          
+          
+            mineee.removeEventListener('click',function(event)
+                                       
+                                       
           { 
-            toggleComments(event, postId), false
-        })
+            toggleComments(event,postId), false
+              
+        }                     )
+          
+          
+          
+          
         }
-        return buttonsList;
+        return buttonsListing;
     }
+  
+  
 }
-
+//-------------------------------------------------------------------------------------------------------------------
 //function 8
 function createComments(comments) 
 {
       
-      if (!comments) {
+      if (!comments) 
+      {
         return undefined;
       }
+  
+  
       
-      let fragment = document.createDocumentFragment();
+      let f1 = document.createDocumentFragment();
       
-      for (let i = 0; i < comments.length; i++) 
+      for (let x = 0;x < comments.length;x++) 
       {
-        var comment = comments[i];
+        var c1 = comments[x];
         
         let article = document.createElement("article");
         
-        let h3 = createElemWithText('h3', comment.name);
+        let h3=createElemWithText('h3', c1.name)  ;
         
-        let p1 = createElemWithText('p', comment.body);
+        let p1=createElemWithText('p', c1.body)    ;
         
-        let p2 = createElemWithText('p', `From: ${comment.email}`);
+        let p2=createElemWithText('p', `From: ${c1.email}`) ;
         
         article.appendChild(h3);
+        
+        
         article.appendChild(p1);
+        
+        
         article.appendChild(p2);
         
-        fragment.appendChild(article);
+        
+        
+        f1.appendChild(article);
       }
+  
+  
+  
+  
+  
     
-      return fragment;
+      return f1;
 }
 
 
+
+//---------------------------------------------------------------------------------------------------------------------
 //function 9
 
 function populateSelectMenu (JSONDATA) 
@@ -218,27 +270,35 @@ function populateSelectMenu (JSONDATA)
   if (JSONDATA) 
   {
   
-    let menu1 = document.querySelector("#selectMenu");
+    let theDeliMenu=document.querySelector("#selectMenu");
+    
 
 
-    let myArray = createSelectOptions(JSONDATA);
+    let myArraysForDays=createSelectOptions(JSONDATA);
 
 
-    myArray.forEach((eachOpt) => 
+    myArraysForDays.forEach((eachOpt) => 
     {
      
-      menu1.appendChild(eachOpt);
+      theDeliMenu.appendChild(eachOpt);
+      
+      
+      
     });
 
     
-    return menu1;
+    return theDeliMenu;
   }
 }
+
+//-------------------------------------------------------------------------------------------------------------------------
 
 //function 10
 async function getUsers()
 {
-  try 
+  
+  
+  try  //tries first and catch later on
   {
     const myResponse = await fetch('https://jsonplaceholder.typicode.com/users');
     
@@ -246,88 +306,162 @@ async function getUsers()
     
     return myData;
   } 
+  
+  
     catch (error) 
     {
+      //catches error and puts error on console
     console.error(error);
   }
 }
 
+
+//---------------------------------------------------------------------------------------------------------------------
 //function 11
 async function getUserPosts(id) 
 {
+  //if no id returns undefined
   if (!id){
     return undefined;
   }
+  
+  
+  
   try 
   {
     const myResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
     
+    
+    
     const myData = await myResponse.json();
+    
+    
     return myData;
+    
+    
   } 
+  
+  
   catch (error) 
   {
+    
+    
     console.error(error);
+    
+    
   }
 }
+
+
+
+
+
+//-----------------------------------------------------------------------------------------------------------------------------
 
 //function 12
 async function getUser(userId) 
 {
-  if(!userId){
+  if(!userId)  //returns undefined if userId is empty
+  {
     return undefined;
   }
+  
+  
+  
+  
   try 
   {
     const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+    
+    
     if (!response.ok) 
+      
+      
     {
-      throw new Error('Failed to fetch user data');
+      throw new Error('Failed.');
     }
-    const userData = await response.json();
-    return userData;
+    
+    const usersusers = await response.json();
+    
+    
+    return usersusers;
   } 
-  catch (error) {
-    console.error('Error fetching user data:', error);
+  catch (error) 
+  {
+    console.error('Error ', error);
+    
     throw error;
   }
 }
 
-
+//--------------------------------------------------------------------------------------------------------------------------
 //function 13
 async function getPostComments(postId) 
-{ if (!postId)
+
 {
+  if (!postId)  //if postId is empty returns undefined
+  {
   return undefined;
-}
+  }
+  
+  
+  
   try 
+    
   {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
-    if (!response.ok) 
+    const responseIsOk=await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
+    
+    
+    if (!responseIsOk.ok) 
     {
-      throw new Error('Failed to fetch post comments');
+      throw new Error('Failed.');
+      
     }
-    const commentsD = await response.json();
     
-    return commentsD;
     
-  } catch (error) 
+    const comD = await responseIsOk.json();
+    
+    return comD;
+    
+  } 
+  catch (error) 
   {
+    
     console.error('Error:', error);
+    
+    
     throw error;
   }
 }
 
+
+//-------------------------------------------------------------------------------------------------------------------------
+
 //function 14
-async function displayComments(postId){
-  if (!postId){
+async function displayComments(postId)
+{
+  //if postId is empty function will return undefined
+  
+  if (!postId)
+  {
     return undefined;
   }
-  var myFunction = document.createElement();
-  myFunction.dataset.postId();
-  var fragments = createComments(comment);
-  myFunction.fragments;
-  return myFunction;
+  var myFunctionNow = document.createElement();
+  
+  
+  myFunctionNow.dataset.postId();
+  
+  
+  var comD;
+  
+  
+  var fragments = createComments(comD);
+  
+  
+  myFunctionNow.fragments;
+  
+  
+  return myFunctionNow;
 
 }
 
@@ -335,123 +469,213 @@ async function displayComments(postId){
 
 
 
-
+//---------------------------------------------------------------------------------------------------------------------
 //function 15
 async function createPosts(posts) 
 {
-  if (!posts){
+  //if posts is empty function will return undefined
+  
+  if (!posts)
+  {
     return undefined;
   }
-    const fragment = document.createDocumentFragment();
+  
+  
+    const f1 = document.createDocumentFragment();
     for (const post of posts) 
+      
     {
-        const article = document.createElement('article');
+        const article=document.createElement('article');
       
-        const h2 = createElemWithText('h2',post.title);
       
-        const p1 = createElemWithText('p',post.body);
+        const h2=createElemWithText('h2',post.title);
       
-        const p2 = createElemWithText('p',`Post ID: ${post.id}`);
       
-        const author = await getUser(post.userId);
+       
       
-        const p3 = createElemWithText('p',`Author: ${author.name} with ${author.company.name}`);
+        const p2=createElemWithText('p',`Post ID:${post.id}`);
       
-        const p4 = createElemWithText('p',author.company.catchPhrase);
+        
+        const p1=createElemWithText('p',post.body);
       
-        const button = createElemWithText('button', 'Show Comments');
+        
+
+        const p3=createElemWithText('p',`Author:${author.name} with ${author.company.name}`);
+      
+        const author=await getUser(post.userId);
+      
+        const p4=createElemWithText('p',author.company.catchPhrase);
+      
+      
+      
+        const button=createElemWithText('button','Show Comments');
+      
+      
       
         button.dataset.postId = post.id;
       
+      
         article.append(h2, p1, p2, p3, p4, button);
       
-        const section = await displayComments(post.id);
       
-        article.append(section);
+        const thisIsNow = await displayComments(post.id);
       
-        fragment.append(article);
+        article.append(thisIsNow);
+      
+        f1.append(article);
     }
-    return fragment;
+    return f1;
 }
+
+
+
+//---------------------------------------------------------------------------------------------------------------------
 
 //function 16
 const displayPosts = async (posts) => 
 {
-    let myMain = document.querySelector("main");
-    let element = (posts) ? await createPosts(posts) : document.querySelector("main p");
-    myMain.append(element);
-    return element;
+    let mine=document.querySelector("main");
+  
+  
+    let two=(posts)?await createPosts(posts) : document.querySelector("main p");
+  
+  
+    mine.append(two);
+  
+  
+    return two;
 }
+
+//------------------------------------------------------------------------------------------------------------------------
 
 //function 17
 function toggleComments(event, postId)
+
 {
-    if (!event||!postId)
+    if (!event)
     {
         return undefined;
     }
+  else if (!postId)
+  {
+    
+    return undefined;
+    
+  }
     event.target.listener = true;
   
-    let section  = toggleCommentSection(postId);
   
-    let button = toggleCommentButton(postId);
+    let s1  = toggleCommentSection(postId);
   
-    return [section, button];
+    let b1 = toggleCommentButton(postId);
+  
+  
+  
+    return [s1,b1];
 }
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
 
 //function 18
 const refreshPosts = async (posts) => 
 {
-    if (!posts){
+    if (!posts)
+    {
         return undefined;
     }
-    let buttons = removeButtonListeners();
-    let myMain = deleteChildElements(document.querySelector("main"));
-    let fragment = await displayPosts(posts);
-    let button = addButtonListeners();
-    return [buttons, myMain, fragment, button];
+    let b1=removeButtonListeners();
+  
+    let m1=deleteChildElements(document.querySelector("main"));
+  
+    let f1=await displayPosts(posts);
+  
+    let b=addButtonListeners();
+  
+    return [b1, m1, f1, b];
 }
+
+//------------------------------------------------------------------------------------------------------------------------
 
 //function 19
 
 const selectMenuChangeEventHandler = async (e) => 
 {
-    try {
-        let userId = e?.target?.value || 1;
-        let posts = await getUserPosts(userId);
-        let refreshPostsArray = await refreshPosts(posts);
-        return [userId, posts, refreshPostsArray];
-    } catch (error) {
-        console.error("An error occurred in selectMenuChangeEventHandler: ", error);
+  
+    try 
+    {
+        let userId = e?.target?.value ||       1;
+      
+        let p1=await getUserPosts(userId);
+      
+        let r=await refreshPosts(p1);
+      
+      
+      
+        return [userId, p1, r];
+    } 
+  catch (error) 
+  {
+        console.error("Error ", error);
+    
+    
+    
+    
+    
+    
+    
         return null;
     }
 }
 
+
+
+
+//------------------------------------------------------------------------------------------------------------------------
 //function 20
+
 const initPage = async () => 
 {
   
     try 
+      
     {
-        let users = await getUsers();
-        let select = populateSelectMenu(users);
-        return [users, select];
-    } catch (error) 
+        let u1 = await getUsers();
+      
+        let s = populateSelectMenu(u1);
+      
+        return [u1, s];
+    } 
+  catch (error) 
+      
     {
-        console.error("An error occurred in initPage: ", error);
+      
+        console.error("Error ", error);
+      
         return null;
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------
 //function 21
-function initApp() {
-    initPage().then(([users, select]) => 
+function initApp() 
+{
+  
+  
+    initPage().then(([u1, s]) => 
       {
-        let selectMenu = document.getElementById("selectMenu");
-        if (selectMenu) 
+        let sm = document.getElementById("selectMenu");
+        if (sm) 
         {
-            selectMenu.appendChild(select);
-            selectMenu.addEventListener("change", selectMenuChangeEventHandler, false);
+          
+            sm.appendChild(s);
+          
+          
+          
+            sm.addEventListener("change",selectMenuChangeEventHandler,false);
+          
         }
     });
 }
